@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JavaScrit Test</title>
+        <!-- 브라우저가 interprete(통역)해서 실행하는 프로그래밍 코드 작성 -->
+
+        <!-- 내부 스크립트 -->
+        <script>
+            // 이 스크립트 영역안에서는 html이 아닌 java script의 문법체계를 준수해야함
+            // html body 영역에서 했던 모든 작업을 스크립트로 처리가능
+
+            // 화면의 출력
+            document.write("Hello world!!")
+
+            document.write('자동 줄바꿈 안됨 <br> 태그를 이용')
+            document.write('<hr>')
+
+            document.write('<a href="https://www.naver.com/">안녕</a>')
+            document.write("<hr>")
+
+            // JS는 변수, 객체, 연산자, 제어문 등이 가능함
+            var a=10;
+            document.write(a+"<br>");
+            
+            var b=new Date
+            document.write(b+"<br>");
+
+            // 이벤트 함수
+            function aaa(){
+                // alert("click button")
+
+                document.write("click button")
+            }
+
+
+        </script>
+        <script src="./01_ex.js"></script>
+    </head>
+    <body>
+        <h3>hello JavaScrit</h3>
+        <button onclick="aaa()">클릭</button>
+    </body>
+</html>
