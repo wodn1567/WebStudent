@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Variable</title>
+        <script>
+            // 자료형의 종류
+            // 1.수치형 : number - 정수 ,  실수
+            // 2.문자형 : string - 한문자, 문자열 - '', ""
+            // 3.논리형 : boolean - ture , false
+            // 4.객체형 : object - 내장, 함수, new
+            // 5.undifined : 값이 없는 변수
+
+            //변수 만들기
+            var a;
+            a=10;
+            document.write(a+"<br>")
+            document.write(typeof(a)+"<br>")
+
+            var b;
+            b="hello";
+            document.write(b+"<br>")
+            document.write(typeof(b)+"<br>")
+
+            var c=false;
+            document.write(c+"<br>")
+            document.write(typeof(c)+"<br>")
+
+            // () <= 파라미터 , {} 중괄호 코드작성영역 []array 배열
+            var d= new Date()
+            document.write(d+"<br>")
+            document.write(typeof(d)+"<br>")
+
+            var e;
+            document.write(e+"<br>")
+            document.write(typeof(e)+"<br>")
+            document.write("<hr>")
+
+            // JS는 동적 타이핑(자료형) 언어이기에
+            // 변수에 값이 대입될 때 자료형이 결정됨.
+            // 변수의 자료형 변경도 가능함.
+
+            var f=10;
+            document.write(f+" - "+typeof(f)+"<br>");
+            
+            f="kim"
+            document.write(f+" - "+typeof(f)+"<br>");
+
+            // JS는 함수형 언어이기에 함수를 객체처럼 변수에 대입할 수도 있음
+
+            var h=function(){
+                document.write("hhh...<br>")
+            }
+            document.write(h+"<br>")//변수의 값... 함수 코드가 출력
+            document.write(typeof(h)+"<br>")
+            // 함수를 가지는 변수의 이름을 함수명으로 호출 할 수 있음
+            h()
+
+            // 문자열 String 객체로 자동 wrapping되기에 객체처럼 사용가능
+            var s="hello"
+            document.write(s.length)
+            document.write("<br>")
+
+            document.write(s.charAt(1))
+            document.write("<br>")
+
+            document.write(s.toUpperCase())
+            document.write("<hr>")
+
+            // 변수 사용할때 특이한점,
+            // 같은 변수를 또 만들어도 에러아님 무시하고 생성
+
+            var a=10;
+            var a;
+
+            document.write(a+"<br>")
+
+            var a=20;
+            document.write(a+"<br>")
+
+            //수치형 변수값 표현법
+            var b=3.14
+            document.write(b)
+            document.write("<br>")
+
+            b=123.5e3
+            document.write(b)
+            document.write("<br>")
+
+            b=123.5e-3
+            document.write(b)
+            document.write("<br>")
+
+            document.write("<hr>")
+
+            //연산자
+
+            //특별하게 다른점은 없음
+            //비교연산 특이한점
+
+            var c=1       //number
+            var d="1"     //string
+            var e=1.0     //number
+
+            // ==비교연산자
+            document.write(c == d);
+            document.write("<br>")
+            document.write(c==e)
+            document.write("<br>")
+
+            // === 자료형과 값을 모두 비교
+            
+            document.write(c === d);
+            document.write("<br>")
+            document.write(c === e)
+            document.write("<br>")
+
+            document.write("<hr>")
+
+            //0 나눗셈 무한대 값이 나옴(infinity)
+            document.write(10/0)
+            document.write("<br>")
+            
+            //비트 연산자 중에서 >>> 부호 비트까지 포함하여 시프트함
+            //양수 값일 때는 >>와 차이없음
+            var f=10
+            document.write(f>>2);
+            document.write("<br>")
+            document.write(f>>>2);
+            document.write("<br>")
+
+            //음수일때 부호비트 1까지도 밀어버리기에
+            //부호비트 자리가 0으로 바뀌어 양수가 되어버림
+            var f=-16
+            document.write(f>>2)
+            document.write("<br>")
+            document.write(f>>>2);
+            document.write("<br>")
+
+            //표현가능한 수치값 확인
+            document.write(Number.MAX_VALUE)
+            document.write("<br>")
+
+            //in,delete,instanceof 라는 연산자도 있음
+            document.write("<hr>")
+
+            //수치형과 문자형의 변환 : GUI 프로그래밍이 가장 기본
+            var h=1
+            document.write(typeof(h))
+            document.write("<br>")
+
+            h=String(h) //number --> String
+            h=h+""//요즘방식
+            document.write(typeof(h))
+            document.write("<br>")
+
+            //문자형을 수치형으로 변환
+
+            h=parseInt("4")
+            document.write(typeof(h))
+            document.write("<br>")
+
+            //수치형 <--> 문자형의 변환이 왜 필요한지 모르는 사람들에게
+            //GUI 에서는 모든 사용자 입출력이 문자형이기에
+            
+            var age=prompt("input your age","0"); //사용자 입력을 받아주는 다이얼로그
+            document.write(age+3)   //age를 문자열로 인식하기에 결합 연산 되어버림
+            document.write("<br>")
+
+            age = parseInt(age)
+            document.write(age+3)
+
+            //다이얼로그로 사용자 입력 받으려니 짜증남 개짜증
+            //html 입력요소를 이용하며 사용자 입력받아 계산
+            //JS로 요소 직접제어해보기
+        </script>
+    </head>
+    <body>
+
+    </body>
+</html>
