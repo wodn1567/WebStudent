@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Js function</title>
+    <script>
+        //함수의 선언 및 호출 (선언적 함수)
+        function aaa(){
+            document.write("aaa<br>")
+        }
+        aaa() //JS함수 호출
+        aaa() //특이한점 - 함수선언과 호출의 순서가 크게 영향을 받지 않음
+
+        bbb()
+        function bbb(){
+            document.write("bbb<br>")
+        }
+        //JS는 코드를 입력하기전에 선언적 함수 부터 모두 읽음
+        //우선순위 차이
+        // ccc()
+    </script>
+
+    <script>
+        // 위에서만든 함수를 호출가능
+        bbb()
+        ccc()
+        function ccc(){
+            document.write("ccc<br>")
+        }
+        
+    </script>
+    <!-- 파라미터있는 함수 -->
+    <script>
+        document.write("<hr>")
+        document.write("<h4>파라미터 전달</h4>")
+
+        function ddd(a){
+            document.write("ddd:"+a)
+            document.write("<br>")
+        }
+        ddd(10)
+        ddd(20)
+        ddd("kim")
+        ddd(new Date())
+        
+        //매개변수
+        function eee(a,b){
+            document.write(a+","+b+"<br>")
+            if(a==undefined || b==undefined){
+                document.write("2개의 수를 모두 전달해 주세요.<br>")
+                return
+            }
+            var c=a+b
+            document.write("덧샘결과: "+c+"<br>")
+        }
+
+        eee(5,3)
+        eee(5) //덧샘결과: NaN
+        //혹시 똑같은 함수를 선언하면 덮어쓰기가됨
+
+        // function ddd(a){
+        //     document.write("<br>새로만든함수<br>")
+        // }
+        // ddd(10)
+
+        //함수 오버로딩(함수 이름은 같고 매개변수가 다른 함수)
+        //얘는 안됨 커엇~
+
+    </script>
+    <!-- 리턴 -->
+    <script>
+        document.write("<hr>")
+        document.write("<h4>함수의 리턴</h4>")
+
+        function ggg(){
+            // return 10
+            // return "Aaa"
+            // return true
+            // return 5<2
+            // return new Date()
+            return[10,20,30]
+
+            //여러개 값을 리턴할 수 없음
+        }
+        var g=ggg()
+
+        document.write(g+"<br>")
+    </script>
+    <!-- 지역변수와 전역변수 -->
+    <script>
+        document.write("<hr>")
+        document.write("<h4>지역변수와 전역변수</h4>")
+
+        var b=100
+        function mmm(){
+            var a=20;
+            document.write("a:"+a+"<br>")
+            b=300
+            document.write("b:"+b+"<br>")
+
+            c=1000
+            document.write("c:"+c+"<br>")
+        }
+        mmm()
+        document.write("함수 밖에있는"+b+"<br>")
+        document.write("함수 밖에있는"+c+"<br>")
+    </script>
+    <!-- 익명함수 -->
+    <script>
+        document.write("<hr>")
+        document.write("<h4>익명함수</h4>")
+        //변수에 함수를 대입하는 형식
+        var show=function(){
+            document.write("나 이제 익명함수야<br>")
+        }
+        //변수의 이름을 함수 호출에 사용하기위해
+        show()
+        
+        //변수의 함수를 대입하였기에 다른변수에도 저장시킬 수 있음
+        var out=show;
+        out()
+        //함수를 값처럼 다른 변수에 전달 가능
+        //함수를 매개변수나 리턴값으로도 가능
+        function kkk(g){
+            g()
+        }
+        kkk(show)
+        kkk(function(){
+            document.write("내가 만든 내 세상이야 시팔새끼들아<br>")
+        })
+        function setOnClickEvent(g){
+            g();
+        }
+        //이벤트처리용 함수
+        setOnClickEvent(function(){
+            document.write("click button 1<br>")
+        })
+        setOnClickEvent(function(){
+            document.write("click button 1<br>")
+        })
+        //리턴에도 사용가능
+        function hhh(){
+            var ppp=function(){
+                document.write("ppp<br>")
+            }
+            return ppp;
+        }
+        var sss=hhh()
+
+        sss()
+
+        hhh()()
+
+        //익명함수는 코드 실행보다 먼저 읽어지지 않음
+        //xxx();//error 선언적 함수가 아닌 익명함수는 대입이기때문에
+        // var xxx=function(){
+        //     document.write("xxx")
+        // }
+        // argument 라는 특별한 매개변수(배열)
+        function add(){
+            document.write("파라미터 갯수:"+arguments.length+"<br>")
+            var sum=0
+            for(var i=0;i<arguments.length;i++){
+                sum+=arguments[i]
+            }
+            document.write("총 합:"+sum+"<br>")
+        }
+        add()
+        add(10)
+        add(10,20)
+        add(10,20,30)
+
+
+    </script>
+    </head>
+    <body>
+        <script>
+            aaa()
+        </script>
+    </body>
+</html>
