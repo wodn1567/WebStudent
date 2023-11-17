@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Event</title>
+        <script>
+            //body 요소 안에있는 html요소 제어
+            document.getElementById('aa').innerHTML="Hello"
+
+            //요소의 load가 완료괴는 이벤트에 콜백함수를 지정
+            //JS는 이벤트 처리하는 방식 3가지 제공
+
+            //1.html에서 요소에 속성으로 이벤트를 함수로 지정
+            function loaded(){
+                document.getElementById('aa').innerHTML="Hello"
+
+                //2.요소의 속성을 변경했던 것처럼 이벤트 속성을 JS지정
+            document.getElementById('aa').onclick=function(){
+                document.getElementById('aa').innerHTML+="good"
+                }
+
+                //3.요소에 이벤트 리스너 추가 메소드 이용
+                document.getElementById('aa').addEventListener('dblclick',function(){
+                    alert('double clicked')
+                })
+            }
+
+            
+        </script>
+    </head>
+    <body onload="loaded()">
+        <!-- 1. 이벤트 처리 연습용(Onload 이벤트) -->
+        <h2 id="aa"></h2>
+
+        <!-- 2.다른이벤트들 종류 -->
+        <input type="text" id="in1" onfocus="aaa()">
+        <input type="text" id="in1" onblur="bbb()" onchange="ccc()">
+        <script>
+            function aaa(){
+                document.getElementById('in1').value="Nice to meet you"
+            }
+            // function bbb(){
+            //     alert('blur')
+            // }
+            // function ccc(){
+            //     alert('change')
+            // }
+        </script>
+        <hr>
+        <!-- 입력후 필드 벗어날 시 대문자로 변경 -->
+        <input type="text" id="in3" onchange="changeup()">
+        <script>
+            function changeup(){
+                var e=document.getElementById('in3')
+                var s=e.value
+                e.value=s.toUpperCase()
+            }
+        </script>
+        <hr>
+        <div style="width: 200px; height: 100px; background-color: yellow;" onmouseover="over(this)" 
+        onmouseout="out(this)" onmousemove="move(this)">
+
+        </div>
+        <script>
+            function over(e){
+                e.style.backgroundColor='lightgreen'
+                e.style.border='2px solid red'
+            }
+            function out(e){
+                e.style.backgroundColor='black'
+                e.style.border=''
+            }
+            var n=0
+            function move(e){
+                n++
+                e.innerHTML='move:'+n
+                e.style.color='ffffff'
+            }
+        </script>
+        <hr>
+        <!-- 마우스 좌표 -->
+        <div style="width: 400px; height: 100px; background-color: green;" id='kk'></div>
+        <script>
+            document.getElementById('kk').addEventListener('mousemove',function(event){
+                //기본파라미터로 전달되어옴
+                var s=""
+                s+='브라우저 문서 안에서의 좌표: '+event.clientX+","+event.clientY+"<br>"
+                s+='모니터 기준 좌표: '+event.screenX+","+event.screenY+"<br>"
+                s+='요소 영역 좌표: '+event.offsetX+','+event.offsetY+"<br>"
+                document.getElementById('kk').innerHTML=s
+            })
+        </script>
+    </body>
+</html>
