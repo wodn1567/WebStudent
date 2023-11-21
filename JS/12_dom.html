@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS dom</title>
+        <script>
+
+        </script>
+    </head>
+    <body>
+        <!-- dom: html 웹 문서 안에 있는 것들을 객체로 바로보고 모델링 -->
+        <!-- 트리구조를 구성하는 것들을 노드 node -->
+        <!-- node 종류 : element node, atributr node, text node -->
+        <p id="p1"><a href="" target="">Google</a></p>
+    </body>
+    <script>
+        var e=document.getElementById('p1')
+        // alert(e.nodeType+":"+e.nodeName) //node type=1:element=p
+
+        //p요소의 속성
+        var attrs=e.attributes
+        // alert(attrs[0].nodeType+":"+attrs[0].nodeName)
+        // alert("속성값:"+attrs[0].value)
+
+        //p요소의 첫번째 자식 노드 찾기
+        var e=e.firstChild
+        // alert(e.nodeType+":"+e.nodeName)
+
+        //a 요소 속성값들
+        var attrs=e.attributes
+        // alert(attrs[0].nodeType+":"+attrs[0].nodeName)
+        // alert(attrs[1].nodeType+":"+attrs[1].nodeName)
+
+        //a요소의 첫번째 자식노드 : text node
+        var t=e.firstChild
+        alert(t.nodeType+":"+t.nodeName)
+        alert("텍스트값:"+t.nodeValue)
+    </script>
+</html>
