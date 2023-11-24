@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS DragDrop</title>
+        <style>
+            #cart{
+                width: 400px;
+                height: 150px;
+                padding: 10px;
+                border: 1px dotted red;
+            }
+        </style>
+        <script>
+            var id;
+            var isoverCart=false
+
+            function startDrag(){
+                //드래그가 되는 요소의 식별 id 값을 변수에 저장
+                id=event.target.id
+            }
+            function overDrag(){
+                //드래그 디폴트값을 허용으로 바꾸기
+                event.preventDefault()
+                isoverCart=true
+            }
+            function leaveDrag(){
+                isoverCart=false
+            }
+            function endDrag(){
+                if(isoverCart){
+                    //처음드래그 시작될때 지정됬던 id를 이용하여 요소 찾기
+                    var e=document.getElementById(id)
+                    document.getElementById('cart').appendChild(e)
+                    isoverCart=false
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="cart" ondragover="overDrag()" ondragleave="leaveDrag()"></div>
+        <img src="./images/1.jpg" alt="브이곰" width="150px" height="150px" id="img1" ondragstart="startDrag()" ondrag="endDrag()">
+        <img src="./images/2.jpg" alt="걸려곰" width="150px" height="150px" id="img2" ondragstart="startDrag()" ondrag="endDrag()">
+    </body>
+</html>
