@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>JS Es6 ArrowFunction</title>
+    </head>
+    <body>
+        <script>
+            //화살표 함수(Arrow Function)- Java/Korlin 람다표기 
+
+            //일반적인 선언함수
+            function show(){
+                document.write("show! <br>")
+            }
+            show()
+
+            //함수를 변수에 저장하여 사용하기 익명함수
+            let output=function(){
+                document.write("output <br>")
+            }
+            //익명함수 객체를 가지고있는 output 변수를 함수명처럼 사용하여 함수호출
+            output()
+
+            //위 익명함수를 화살표함수로 변경 사용
+            let display=()=>{
+                document.write('display <br>')
+            }
+            display()
+
+            //파라미터 받기
+            let display2=(name)=>{
+                document.write("display2:"+name+"<br>")
+            }
+            display2('ddd')
+
+            //화살표함수 간소화
+            //1) 파라미터 1개일때 ()생략가능
+            let display3=name=>{
+                document.write('display3:'+name+"<br>")
+            }
+            display3('adad')
+
+            //함수의 실행문 한줄일 때 {}생략가능
+            let display4=name=>document.write('display4: '+name+"<br>")
+            display4('adas')
+
+            //파라미터가 없을때 ()필수
+            let display5=()=>document.write('display5'+"<br>")
+
+            let display6=(name,age)=>document.write(`dispaly6: ${name} , ${age} <br>`)
+            display6('a','b')
+        </script>
+
+        <hr>
+        <!-- 화살표함수는 이벤트 콜백함수로 많이 사용됨 -->
+        <button id="b1">button</button>
+        <h4 id="hh">hello<br></h4>
+        <script>
+            //버튼을 클릭하여 h4요소 글씨 변경
+            //구버전
+            let b1=document.getElementById('b1')
+            b1.onclick=function(){
+                document.getElementById('hh').innerHTML='clickbtn'
+            }
+
+            //화살표함수적용
+            b1.onclick=()=> document.getElementById('hh').innerHTML="clickbtn"+"<br>"
+
+            //반복문에 적용
+            let aaa=new Array(10,20,30)
+            for(let i=0;i<aaa.length;i++){
+                document.querySelector('#hh').innerHTML+=aaa[i]+"<br>"
+            }    
+
+            for(index in aaa){
+                document.querySelector('#hh').innerHTML+=aaa[index]+"<br>"
+            }
+            //foreach문
+            aaa.forEach(function(value,index,array){
+                document.write(index+":"+value+"<br>")
+            })
+            //요소값 하나만 사용하고 싶다면
+            aaa.forEach(function(value){
+                document.write(value+"<br>")
+            })
+            //화살표함수적용
+            aaa.forEach((value)=>{
+                document.write(value+"<br>")
+            })
+            
+            aaa.forEach(value => document.write(value+"<br>"))
+            
+            document.write("<hr>")
+            
+            //새로운 배열 복사
+            let bbb=aaa.map(function(value){
+                return value+1
+            })
+            document.write('결과'+bbb+'<br>')//배열요소 값 출력
+            //화살표 함수로 처리
+            let ccc=bbb.map(value=>{return value+1})
+            document.write('결과'+ccc+'<br>')
+
+            let ddd=ccc.map(value=>value+1)
+            document.write('결과'+ddd+'<br>')
+
+        </script>
+    </body>
+</html>
